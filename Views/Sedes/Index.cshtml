@@ -1,0 +1,48 @@
+@model IEnumerable<SEGURA_ASSETMENTS.Models.Sede>
+
+@{
+    ViewData["Title"] = "Lista de Sedes";
+
+    // Lista de URLs de imágenes quemadas o diferentes que deseas intercalar
+    var imageUrls = new List<string>
+    {
+        "https://www.turismoquindio.com/wp-content/uploads/2019/07/fincas-panaca-herreria15-20-3.jpeg",
+        "https://www.turismoquindio.com/wp-content/uploads/2017/07/finca-la-pradera-2-quimbaya-14.jpg", // Aquí coloca tus URLs
+        "https://fincasdeturismo.com/wp-content/uploads/2022/04/Fincas_en_armendia_F026_3-1.jpg",
+    };
+
+    // Contador para alternar las imágenes
+    int imgIndex = 0;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre Sede</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+            <th>Ubicacion</th>
+            <th>Seleccionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sede in Model)
+        { 
+            var imageUrl = imageUrls[imgIndex];
+            imgIndex = (imgIndex + 1) % imageUrls.Count; 
+
+            <tr>
+                <td><img src="@imageUrl" style="width: 100px;" alt="Imagen de la sede"></td>
+                <td>@sede.Nombre_sede</td>
+                <td>@sede.ServiciosSede</td>
+                <td>@sede.Tipo</td>
+                <td>@sede.Ciudad</td>
+                <td><a class="btn btn-danger" asp-action="Fechas" asp-controller="Sedes">Seleccionar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

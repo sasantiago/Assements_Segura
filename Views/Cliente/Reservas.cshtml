@@ -1,0 +1,41 @@
+
+
+@model List<SEGURA_ASSETMENTS.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Mis Reservas";
+}
+
+<div class="container mt-5">
+    <h2>Mis Reservas</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Fecha Llegada</th>
+                <th>Fecha Salida</th>
+                <th>Noches</th>
+                <th>Lavandería</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        @* <tbody>
+            <!-- Itera a través de las reservas del usuario -->
+            @foreach (var reserva in Model.Reservas)
+            {
+                <tr>
+                    <td>@reserva.FechaLlegada</td>
+                    <td>@reserva.FechaSalida</td>
+                    <td>@(reserva.FechaSalida - reserva.FechaLlegada).TotalDays</td>
+                    <td>@(reserva.Lavanderia ? "Sí" : "No")</td>
+                    <td>@reserva.TotalReserva</td>
+                    <td>
+                        <!-- Botones para editar o cancelar la reserva -->
+                        <a href="/Reservas/Editar/@reserva.Id" class="btn btn-primary">Editar</a>
+                        <a href="/Reservas/Cancelar/@reserva.Id" class="btn btn-danger">Cancelar</a>
+                    </td>
+                </tr>
+            }
+        </tbody> *@
+    </table>
+</div>

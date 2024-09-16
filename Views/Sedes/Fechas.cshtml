@@ -1,0 +1,317 @@
+@model SEGURA_ASSETMENTS.Models.Reserva;
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<!-- Incluir Bootstrap CSS y JS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2 class="text-danger">Mis fechas</h2>
+
+            <!-- Fecha llegada -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="fecha-llegada">Fecha llegada:</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" id="fecha-llegada" placeholder="Ingrese fecha llegada">
+                </div>
+            </div>
+
+            <!-- Fecha salida -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="fecha-salida">Fecha salida:</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control" id="fecha-salida" placeholder="Ingrese fecha salida">
+                </div>
+            </div>
+
+            <!-- Noches -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="noches">Noches:</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="noches">
+                </div>
+            </div>
+
+            <!-- Personas -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="personas">Personas:</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="personas">
+                </div>
+            </div>
+
+            <!-- Servicio de lavandería -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-8 col-form-label" for="lavanderia">Servicio de lavandería:</label>
+                <div class="col-sm-4">
+                    <input type="checkbox" id="lavanderia">
+                </div>
+            </div>
+
+            <hr>
+            <br>
+
+            <!-- Habitaciones -->
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="habitaciones">Habitaciones:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="habitaciones">
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="precio">Dias Ordinarios:</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" style="width:40px" id="precio">
+                </div>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="">
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="habitaciones">lavanderia:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="lavanderia">
+                </div>
+            </div>
+            <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label" for="habitaciones">Valor total:</label>
+                <div class="col-sm-8">
+                    <p class="text-danger fs-3">$0000</p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmarReservaModal">Reservar</button>
+        </div>
+        <div class="col-md-8 align-items-center">
+            <h2 class="text-danger">Sede Recreativa villeta</h2>
+                <br>
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="~/images/villeta.png" class="img-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="~/images/casa-principal.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/images/casa-principal.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="~/images/casa-principal.jpg" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ullam laboriosam nemo dolorem
+                            optio blanditiis eum porro, reprehenderit harum ipsa vitae, distinctio, molestiae sunt
+                            perspiciatis cum. Reiciendis fuga numquam architecto.</p>
+                        <p>As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this
+                            would look with some actual content in here, rather than just this boring placeholder text
+                            that goes on and on, but actually conveys no tangible information at. It simply takes up
+                            space and should not really be read.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<h2 class="text-danger">Habitaciones/alojamientos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Detalles</th>
+            <th>Habitación/Alojameniento</th>
+            <th>Capacidad</th>
+            <th>Tarifa día ordinario</th>
+            <th>Disponibilidad fecha seleccionada</th>
+            <th>Ver Calendario</th>
+            <th>Reservar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search " data-bs-toggle="modal" data-bs-target="#habitacionModal2"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg></td>
+            <td>Standard</td>
+            <td>4</td>
+            <td>$100.000</td>
+            <td>Disponible</td>
+            <td><input type="date"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search " data-bs-toggle="modal" data-bs-target="#habitacionModal2"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg></td>
+            <td>Deluxe</td>
+            <td>20</td>
+            <td>$150.000</td>
+            <td>Disponible</td>
+            <td><input type="date"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search " data-bs-toggle="modal" data-bs-target="#habitacionModal2"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg></td>
+            <td>Premium</td>
+            <td>25</td>
+            <td>$200.000</td>
+            <td>Disponible</td>
+            <td><input type="date"></td>
+            <td><input type="checkbox"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal para Detalles de Habitación  -->
+<div class="modal fade" id="habitacionModal2" tabindex="-1" aria-labelledby="habitacionModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="habitacionModalLabel2">Detalles de Habitación Deluxe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger">Detalles específicos de la habitación Deluxe...</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                                        <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Cama doble</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Nevera</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Estufa</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Televisor</span>
+                            </div>  
+                        </div>
+                        <div class="col-md-6">
+                             <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Habitacion:{id}</span>
+                            </div>
+                             <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Capacidad:{id}</span>
+                            </div>
+                             <div class="d-flex align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
+                                </svg>
+                                <span class="ms-2">Dia oridinario:{id}</span>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- confirmacionReserva --> 
+<div class="modal fade" id="confirmarReservaModal" tabindex="-1" aria-labelledby="confirmarReservaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarReservaLabel">Confirmar Reserva</h5>
+                <hr>
+                @* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque quidem quia nesciunt, eveniet vitae optio.</p> *@
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <!-- Columna izquierda -->
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Mis fechas</h6>
+                            <hr>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Fecha llegada:</p>
+                                <span class="ms-2">Fecha: {id}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Fecha salida:</p>
+                                <span class="ms-2">Fecha: {id}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Noches:</p>
+                                <span class="ms-2">Noches: {id}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Lavandería:</p>
+                                <span class="ms-2">Sí/No</span>
+                            </div>
+                        </div>
+                        <!-- Columna derecha -->
+                        <div class="col-md-6">
+                            <h6 class="text-danger">Total Reserva</h6>
+                            <hr>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Habitaciones:</p>
+                                <span class="ms-2">Día: {id}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Días ordinarios:</p>
+                                <span class="ms-2">Día: {id}</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <p class="mb-0">Lavandería:</p>
+                                <span class="ms-2">Sí/No</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <h6 class="mb-0">Valor Total:</h6>
+                                <span class="ms-4 text-danger">Valor: {id}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Confirmar Reserva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,55 @@
+@model IEnumerable<SEGURA_ASSETMENTS.Models.AspNetUsers>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h2>Clientes</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Clientes")" class="btn btn-primary">Crear Nuevo Cliente</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre Completo</th>
+            <th>Rol</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Celular</th>
+            <th>Correo</th> 
+            <th>Departamento</th>
+            <th>Municipio</th>
+            <th>Barrio</th>
+            <th>Dirección</th>
+            <th>Pregunta Secreta</th>
+            <th>Respuesta Secreta</th>
+            <th>Auth Correo</th>
+            <th>Auth Celular</th>
+            <th>Contraseña</th>
+        </tr>
+    </thead>
+    @* <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.clientes_id</td>
+                <td>@cliente.customer_NombreCompleto</td>
+                <td>@cliente.Roll</td>
+                <td>@cliente.customer_fechaNacimiento.ToShortDateString()</td>
+                <td>@cliente.Celular</td>
+                <td>@cliente.Correo</td>
+                <td>@cliente.Id_Departamento</td>
+                <td>@cliente.Municipio</td>
+                <td>@cliente.Barrio</td>
+                <td>@cliente.Direccion</td>
+                <td>@cliente.Pregunta_Secreta</td>
+                <td>@cliente.Respuesta_Secreta</td>
+                <td>@cliente.Auth_Correo</td>
+                <td>@cliente.Auth_Celular</td>
+                <td>@cliente.Contrasena</td>
+            </tr>
+        }
+    </tbody> *@
+</table>

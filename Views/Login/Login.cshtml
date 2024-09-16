@@ -1,0 +1,86 @@
+@model SEGURA_ASSETMENTS.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="text-danger">Login</h2>
+
+<div class="row">
+    <!-- Mitad de la imagen -->
+
+    <!-- Mitad con el formulario y el tablero alineados -->
+    <div class="col-md-6">
+        <div class="row">
+            <!-- Columna para el formulario -->
+            <div class="col-md-6">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="contrasena"></label>
+                        <input asp-for="contrasena" class="form-control" id="passwordInput"/>
+                        <span asp-validation-for="contrasena" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger">Login</button>
+                </form>
+            </div>
+
+            <!-- Columna para el tablero de números -->
+            <div class="col-md-6">
+                <h3 class="text-center">Tablero Digital</h3>
+                <table class="table table-bordered text-center">
+                    <tbody>
+                        <tr>
+                            <td class="number-tile-danger bg-danger" id="num-1" onclick="addNumber(1)">1</td>
+                            <td class="number-tile-danger bg-danger" id="num-2"onclick="addNumber(2)">2</td>
+                            <td class="number-tile-danger bg-danger" id="num-3"onclick="addNumber(3)">3</td>
+                        </tr>
+                        <tr>
+                            <td class="number-tile-danger bg-danger" id="num-4"onclick="addNumber(4)">4</td>
+                            <td class="number-tile-danger bg-danger" id="num-5"onclick="addNumber(5)">5</td>
+                            <td class="number-tile-danger bg-danger" id="num-6"onclick="addNumber(6)">6</td>
+                        </tr>
+                        <tr>
+                            <td class="number-tile-danger bg-danger" id="num-7"onclick="addNumber(7)">7</td>
+                            <td class="number-tile-danger bg-danger" id="num-8"onclick="addNumber(8)">8</td>
+                            <td class="number-tile-danger bg-danger" id="num-9"onclick="addNumber(9)">9</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" class="number-tile-danger bg-danger" id="num-0"onclick="addNumber(0)">0</td>
+                            <td colspan="2" class="number-title bg-danger" id="limpiar"onclick="remove()">Limpiar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-6">
+        <img src="images/bannerLogin.jpg" alt="Banner Login" class="img-fluid">
+    </div>
+
+</div>
+<script>
+    function addNumber(num) {
+        var passwordInput = document.getElementById('passwordInput');
+        passwordInput.value += num; 
+    }
+    function remove(){
+        var passwordInput = document.getElementById('passwordInput');
+        passwordInput.value = passwordInput.value.slice(0, -1); 
+    }
+</script>
